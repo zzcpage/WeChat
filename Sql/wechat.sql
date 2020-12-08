@@ -11,7 +11,7 @@
  Target Server Version : 50731
  File Encoding         : 65001
 
- Date: 28/11/2020 01:15:11
+ Date: 08/12/2020 21:36:42
 */
 
 SET NAMES utf8mb4;
@@ -66,6 +66,35 @@ CREATE TABLE `msg`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Table structure for requestfriend
+-- ----------------------------
+DROP TABLE IF EXISTS `requestfriend`;
+CREATE TABLE `requestfriend`  (
+  `uid1` int(11) NOT NULL,
+  `uid2` int(255) NOT NULL,
+  `pos` int(255) NOT NULL,
+  `dates` date NOT NULL,
+  `id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for result
+-- ----------------------------
+DROP TABLE IF EXISTS `result`;
+CREATE TABLE `result`  (
+  `id` int(255) NOT NULL,
+  `uid1` int(255) NOT NULL,
+  `uid2` int(255) NOT NULL,
+  `type` int(255) NOT NULL,
+  `pos1` int(255) NOT NULL,
+  `pos2` int(255) NULL DEFAULT NULL,
+  `isread` int(255) NOT NULL,
+  `dates` date NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
 -- Table structure for unsent
 -- ----------------------------
 DROP TABLE IF EXISTS `unsent`;
@@ -88,15 +117,16 @@ CREATE TABLE `unsent`  (
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`  (
   `Uid` int(20) NOT NULL,
-  `amount` int(18) NOT NULL,
+  `account` int(18) NOT NULL,
   `password` varchar(25) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `sex` int(1) UNSIGNED NOT NULL,
   `birth` date NOT NULL,
   `signature` varchar(150) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `bImage` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `imgSrc` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `status` int(255) NOT NULL,
   PRIMARY KEY (`Uid`) USING BTREE,
-  UNIQUE INDEX `amount_index`(`amount`, `Uid`) USING BTREE
+  UNIQUE INDEX `amount_index`(`account`, `Uid`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 SET FOREIGN_KEY_CHECKS = 1;
