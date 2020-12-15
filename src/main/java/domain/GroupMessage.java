@@ -18,7 +18,7 @@ public class GroupMessage {
 
     public GroupMessage(Group group, List<FriendMessage> friendMessages) {
         this.groupId = group.getId();
-        this.groupName = group.getgName();
+        this.groupName = group.getGname();
         this.friends = friendMessages;
     }
 
@@ -44,5 +44,14 @@ public class GroupMessage {
 
     public void setFriends(List<FriendMessage> friends) {
         this.friends = friends;
+    }
+
+    @Override
+    public String toString() {
+        return "GroupMessage{" +
+                "groupId=" + groupId +
+                ", groupName='" + groupName + '\'' +
+                ", friends=" + friends +
+                '}';
     }
 }

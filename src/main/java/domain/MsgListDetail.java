@@ -17,8 +17,8 @@ public class MsgListDetail {
 
     public MsgListDetail(MsgList msgList, FriendMessage friendMessage, Boolean isSentBySelf) {
         this.date = msgList.getDate();
-        this.lastMessage = msgList.getLastMessage();
-        this.friend = friend;
+        this.lastMessage = msgList.getMsg();
+        this.friend = friendMessage;
         this.isSentBySelf = isSentBySelf;
     }
 
@@ -52,5 +52,15 @@ public class MsgListDetail {
 
     public void setSentBySelf(Boolean sentBySelf) {
         isSentBySelf = sentBySelf;
+    }
+
+    @Override
+    public String toString() {
+        return "MsgListDetail{" +
+                "friend=" + friend +
+                ", lastMessage='" + lastMessage + '\'' +
+                ", date=" + date +
+                ", isSentBySelf=" + isSentBySelf +
+                '}';
     }
 }

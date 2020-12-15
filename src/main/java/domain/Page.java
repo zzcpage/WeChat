@@ -7,25 +7,25 @@ import java.util.List;
  * @param <T>具体要分页的类
  */
 public class Page<T> {
-    public static final Integer PAGE_SIZE = 10;
+    public static final Long PAGE_SIZE = 10L;
     //当前页页码
-    private Integer pageNo;
+    private Long pageNo;
     //总页数
-    private Integer pageTotal;
+    private Long pageTotal;
     //当前页大小
-    private Integer pageSize = PAGE_SIZE;
+    private Long pageSize = PAGE_SIZE;
     //要分页数据记录总数
-    private Integer total;
+    private Long total;
     //当前页数据详细信息
     private List<T> items;
 
-    public Integer getPageNo() {
+    public Long getPageNo() {
         return pageNo;
     }
 
-    public void setPageNo(Integer pageNo) {
+    public void setPageNo(Long pageNo) {
         if(pageNo <= 1) {
-            this.pageNo = 1;
+            this.pageNo = 1L;
         } else if (pageNo > pageTotal) {
             this.pageNo = pageTotal;
         } else {
@@ -33,27 +33,27 @@ public class Page<T> {
         }
     }
 
-    public Integer getPageTotal() {
+    public Long getPageTotal() {
         return pageTotal;
     }
 
-    public void setPageTotal(Integer pageTotal) {
+    public void setPageTotal(Long pageTotal) {
         this.pageTotal = pageTotal;
     }
 
-    public Integer getPageSize() {
+    public Long getPageSize() {
         return pageSize;
     }
 
-    public void setPageSize(Integer pageSize) {
+    public void setPageSize(Long pageSize) {
         this.pageSize = pageSize;
     }
 
-    public Integer getTotal() {
+    public Long getTotal() {
         return total;
     }
 
-    public void setTotal(Integer total) {
+    public void setTotal(Long total) {
         this.total = total;
     }
 

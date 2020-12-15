@@ -2,22 +2,21 @@ package domain;
 
 import java.util.Date;
 
-public class ImpressDetail {
+public class Impress {
     private Long id;
     private Long suid;
+    private Long ruid;
     private Date date;
     private String msg;
 
-    private String uname;
-    private String imgSrc;
+    public Impress() {
+    }
 
-    public ImpressDetail(Impress impress, String uname, String imgSrc) {
-        this.msg = impress.getMsg();
-        this.id = impress.getId();
-        this.suid = impress.getSuid();
-        this.date = impress.getDate();
-        this.imgSrc = imgSrc;
-        this.uname = uname;
+    public Impress(Long suid, Long ruid, Date date, String msg) {
+        this.suid = suid;
+        this.ruid = ruid;
+        this.date = date;
+        this.msg = msg;
     }
 
     public Long getId() {
@@ -36,6 +35,14 @@ public class ImpressDetail {
         this.suid = suid;
     }
 
+    public Long getRuid() {
+        return ruid;
+    }
+
+    public void setRuid(Long ruid) {
+        this.ruid = ruid;
+    }
+
     public Date getDate() {
         return date;
     }
@@ -52,31 +59,14 @@ public class ImpressDetail {
         this.msg = msg;
     }
 
-    public String getUname() {
-        return uname;
-    }
-
-    public void setUname(String uname) {
-        this.uname = uname;
-    }
-
-    public String getImgSrc() {
-        return imgSrc;
-    }
-
-    public void setImgSrc(String imgSrc) {
-        this.imgSrc = imgSrc;
-    }
-
     @Override
     public String toString() {
-        return "ImpressDetail{" +
+        return "Impress{" +
                 "id=" + id +
                 ", suid=" + suid +
+                ", ruid=" + ruid +
                 ", date=" + date +
                 ", msg='" + msg + '\'' +
-                ", uname='" + uname + '\'' +
-                ", imgSrc='" + imgSrc + '\'' +
                 '}';
     }
 }

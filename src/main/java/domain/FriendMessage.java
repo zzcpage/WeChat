@@ -16,6 +16,7 @@ public class FriendMessage {
     private Date birth ;
     //签名
     private String signature;
+    private String email;
     //头像
     private String imgSrc;
     //是否在线
@@ -24,13 +25,14 @@ public class FriendMessage {
     public FriendMessage() {
     }
 
-    public FriendMessage(Long uid, String account, String uname, String sex, Date birth, String signature, String imgSrc, Integer status) {
+    public FriendMessage(Long uid, String account, String uname, String sex, Date birth, String signature, String email, String imgSrc, Integer status) {
         this.uid = uid;
         this.account = account;
         this.uname = uname;
         this.sex = sex;
         this.birth = birth;
         this.signature = signature;
+        this.email = email;
         this.imgSrc = imgSrc;
         this.status = status;
     }
@@ -39,11 +41,12 @@ public class FriendMessage {
         this.uid = user.getUid();
         this.account = user.getAccount();
         this.birth = user.getBirthday();
-        this.imgSrc = user.getHeadImg();
+        this.imgSrc = user.getHeadimg();
         this.signature = user.getSignature();
         this.sex = user.getSex();
         this.uname = user.getUname();
-        this.status = user.getStatus();
+        this.email = user.getEmail();
+        this.status = user.getState();
     }
 
 
@@ -110,5 +113,20 @@ public class FriendMessage {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "FriendMessage{" +
+                "uid=" + uid +
+                ", account='" + account + '\'' +
+                ", uname='" + uname + '\'' +
+                ", sex='" + sex + '\'' +
+                ", birth=" + birth +
+                ", signature='" + signature + '\'' +
+                ", email='" + email + '\'' +
+                ", imgSrc='" + imgSrc + '\'' +
+                ", status=" + status +
+                '}';
     }
 }

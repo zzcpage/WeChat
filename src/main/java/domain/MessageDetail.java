@@ -28,7 +28,7 @@ public class MessageDetail {
         this.suid = message.getSuid();
         this.ruid = message.getRuid();
         this.state = message.getState();
-        this.message = message.getMessage();
+        this.message = message.getMsg();
         this.imgSrc = imgSrc;
         this.sName = sName;
     }
@@ -95,5 +95,19 @@ public class MessageDetail {
 
     public void setsName(String sName) {
         this.sName = sName;
+    }
+
+    @Override
+    public String toString() {
+        return "MessageDetail{" +
+                "id=" + id +
+                ", date=" + date +
+                ", suid=" + suid +
+                ", ruid=" + ruid +
+                ", state=" + state +
+                ", message='" + message + '\'' +
+                ", imgSrc='" + imgSrc + '\'' +
+                ", sName='" + sName + '\'' +
+                '}';
     }
 }

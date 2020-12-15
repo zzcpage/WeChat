@@ -1,6 +1,7 @@
 package domain;
 
-import java.sql.Date;
+
+import java.util.Date;
 import java.util.List;
 
 public class UserMessage {
@@ -11,6 +12,7 @@ public class UserMessage {
     private String sex ;
     private Date birthday ;
     private String signature ;
+    private String email;
     private String imgSrc ;
     private Integer status ;
     private List<GroupMessage> groups;
@@ -19,11 +21,14 @@ public class UserMessage {
 
     }
 
-    public UserMessage(String account, String sex, Date birthday, String signature, String imgSrc, Integer status, List<GroupMessage> groups) {
+    public UserMessage(Long uid, String account, String uName, String sex, Date birthday, String signature, String email, String imgSrc, Integer status, List<GroupMessage> groups) {
+        this.uid = uid;
         this.account = account;
+        this.uName = uName;
         this.sex = sex;
         this.birthday = birthday;
         this.signature = signature;
+        this.email = email;
         this.imgSrc = imgSrc;
         this.status = status;
         this.groups = groups;
@@ -37,8 +42,9 @@ public class UserMessage {
         this.uName = user.getUname();
         this.sex = user.getSex();
         this.birthday = user.getBirthday();
-        this.imgSrc = user.getHeadImg();
-        this.status = user.getStatus();
+        this.imgSrc = user.getHeadimg();
+        this.email = user.getEmail();
+        this.status = user.getState();
     }
 
     public Long getUid() {
@@ -111,5 +117,21 @@ public class UserMessage {
 
     public void setGroups(List<GroupMessage> groups) {
         this.groups = groups;
+    }
+
+    @Override
+    public String toString() {
+        return "UserMessage{" +
+                "uid=" + uid +
+                ", account='" + account + '\'' +
+                ", uName='" + uName + '\'' +
+                ", sex='" + sex + '\'' +
+                ", birthday=" + birthday +
+                ", signature='" + signature + '\'' +
+                ", email='" + email + '\'' +
+                ", imgSrc='" + imgSrc + '\'' +
+                ", status=" + status +
+                ", groups=" + groups +
+                '}';
     }
 }

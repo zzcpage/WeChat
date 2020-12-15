@@ -25,8 +25,8 @@ public class RequestMessage {
 
     public RequestMessage(Request request, String uname, String imgSrc) {
         this.id = request.getId();
-        this.dates = request.getDates();
-        this.sGroup = request.getsGroup();
+        this.dates = request.getDate();
+        this.sGroup = request.getSgroup();
         this.imgSrc = imgSrc;
         this.uname = uname;
         this.remark = request.getRemark();
@@ -96,5 +96,19 @@ public class RequestMessage {
 
     public void setUname(String uname) {
         this.uname = uname;
+    }
+
+    @Override
+    public String toString() {
+        return "RequestMessage{" +
+                "id=" + id +
+                ", suid=" + suid +
+                ", remark='" + remark + '\'' +
+                ", state=" + state +
+                ", sGroup=" + sGroup +
+                ", dates=" + dates +
+                ", imgSrc='" + imgSrc + '\'' +
+                ", uname='" + uname + '\'' +
+                '}';
     }
 }
