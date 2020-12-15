@@ -8,15 +8,14 @@ import java.util.ArrayList;
 
 public interface GroupService {
 
-    /**获得该用户好友列表
-     * @param p 登录用户对象
-     * @return  返回该用户的所有分组
-     */
-    public ArrayList<GroupMessage> getGroups(User p);
+//    /**获得该用户好友列表
+//     * @param p 登录用户对象
+//     * @return  返回该用户的所有分组
+//     */
+//    public ArrayList<GroupMessage> getGroups(User p);
 
 
     /**获得该用户好友列表
-     * @param p 登录用户uid
      * @return  返回该用户的所有分组
      */
     public ArrayList<GroupMessage> getGroups(Long uid);
@@ -39,11 +38,7 @@ public interface GroupService {
      */
     public void addGroup(Group p);
 
-    /**
-     * 删除分组
-     * @param g 分组
-     */
-    public void deleteGroup(Group g);
+
 
     /**
      * 删除分组

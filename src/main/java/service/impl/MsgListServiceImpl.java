@@ -5,11 +5,13 @@ import domain.FriendMessage;
 import domain.MsgList;
 import domain.MsgListDetail;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import service.FriendService;
 import service.MsgListService;
 
 import java.util.ArrayList;
 
+@Service("msgListService")
 public class MsgListServiceImpl implements MsgListService {
 
     @Autowired
@@ -21,7 +23,7 @@ public class MsgListServiceImpl implements MsgListService {
     @Override
     public ArrayList<MsgListDetail> getMessageListByUid(Long uid) {
         ArrayList<MsgListDetail> ret = new ArrayList<>();
-        ArrayList<MsgList> lists = msgListDao.getListByUid(uid);
+        ArrayList<MsgList> lists = msgListDao.listMsgList(uid);
         for(MsgList msgList:lists) {
             Long suid = msgList.getSuid();
             MsgListDetail detail;
@@ -34,7 +36,7 @@ public class MsgListServiceImpl implements MsgListService {
 
     @Override
     public void addMsgList(MsgList msgList) {
-        msgListDao.addMsgList(msgList);
+        msgListDao.insertMsgList(msgList);
     }
 
     @Override

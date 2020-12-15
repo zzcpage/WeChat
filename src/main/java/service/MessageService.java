@@ -51,6 +51,6 @@ public interface MessageService {
      * @param pageSize 每页几条数据
      * @return
      */
-    public Page<MessageDetail> getPage(Long uid, Long friendUid, Integer pageNo, Integer pageSize);
+    public Page<MessageDetail> getPage(Long uid, Long friendUid, Long pageNo, Long pageSize);
 
 }

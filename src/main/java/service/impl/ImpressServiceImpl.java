@@ -6,6 +6,7 @@ import domain.Impress;
 import domain.ImpressDetail;
 import domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import service.ImpressService;
 
@@ -18,11 +19,12 @@ public class ImpressServiceImpl implements ImpressService {
     private ImpressDao impressDao;
 
     @Autowired
+    @Qualifier("userDao")
     private UserDao userDao;
 
     @Override
     public void addImpress(Impress impress) {
-        impressDao.addImpress(impress);
+        impressDao.insertImpress(impress);
     }
 
     @Override
@@ -37,11 +39,12 @@ public class ImpressServiceImpl implements ImpressService {
 
     @Override
     public List<ImpressDetail> getImpresses(Long uid, Integer n) {
-        List<Impress> impresses = impressDao.getImpresses(uid, n);
+        long countImpress = impressDao.getCountImpress(uid);
+        List<Impress> impresses = impressDao.listImpress(uid,Math.max(countImpress - n, 0) ,n);
         List<ImpressDetail> ret = new ArrayList<>();
         for(Impress impress:impresses) {
             User user = userDao.getUserById(impress.getRuid());
-            ret.add(new ImpressDetail(impress, user.getUname(), user.getHeadImg()));
+            ret.add(new ImpressDetail(impress, user.getUname(), user.getHeadimg()));
         }
         return ret;
     }
@@ -49,8 +52,9 @@ public class ImpressServiceImpl implements ImpressService {
     @Override
     public ImpressDetail getImpress(Long uid1, Long uid2) {
         Impress impress = impressDao.getImpress(uid1, uid2);
+        if(impress == null)return null;
         User user = userDao.getUserById(impress.getRuid());
-        return new ImpressDetail(impress, user.getUname(), user.getHeadImg());
+        return new ImpressDetail(impress, user.getUname(), user.getHeadimg());
     }
 
 

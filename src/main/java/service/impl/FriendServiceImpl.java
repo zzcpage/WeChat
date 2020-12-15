@@ -8,6 +8,7 @@ import domain.Friend;
 import domain.FriendMessage;
 import domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import service.FriendService;
 @Service("friendService")
@@ -17,6 +18,7 @@ public class FriendServiceImpl implements FriendService {
     private FriendDao friendDao;
 
     @Autowired
+    @Qualifier("userDao")
     private UserDao userDao;
 
     @Autowired
@@ -35,7 +37,7 @@ public class FriendServiceImpl implements FriendService {
 
     @Override
     public void deleteFriendById(Long uid, Long friendUid) {
-        friendDao.deleteFriends(uid, friendUid);
+        friendDao.deleteFriendById(uid, friendUid);
     }
 
     @Override

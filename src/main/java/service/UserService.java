@@ -46,16 +46,36 @@ public interface UserService {
      */
     public void updataUser(User user);
 
-    /**
-     * 更新用户信息
-     * @param userMessage 经过service封装的实体类
-     */
-    public void updataUser(UserMessage userMessage);
+//    /**
+//     * 更新用户信息
+//     * @param userMessage 经过service封装的实体类
+//     */
+//    public void updataUser(UserMessage userMessage);
 
     /**
      * 判断用户是否在线
      * @return
      */
     public boolean isOnline(Long uid);
+
+    /**
+     * 登录服务
+     * @param account
+     * @param password
+     * @return 非空表示成功，否则失败
+     */
+    public UserMessage login(String account, String password);
+
+    /**
+     * 用户登出
+     * @param uid
+     */
+    public void logout(long uid);
+
+    /**
+     * 注册
+     * @return
+     */
+    public String register(User user);
 
 }

@@ -3,6 +3,7 @@ package service.impl;
 import dao.*;
 import domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import service.GroupService;
 
@@ -22,6 +23,7 @@ public class GroupServiceImpl implements GroupService {
     private MessageDao messageDao;
 
     @Autowired
+    @Qualifier("userDao")
     private UserDao userDao;
 
     //Friend List变为 FriendMessage List
@@ -40,23 +42,22 @@ public class GroupServiceImpl implements GroupService {
         return ret;
     }
 
-    @Override
-    public ArrayList<GroupMessage> getGroups(User p) {
-        User user = userDao.getUserById(p.getUid());
-        ArrayList<GroupMessage> groupMessages = new ArrayList<>();
-        ArrayList<Group> groups = groupDao.getGroups(user);
-        for(Group g : groups) {
-            Long id = g.getId();
-            groupMessages.add(getGroupByGID(id));
-        }
-        return groupMessages;
-    }
+//    @Override
+//    public ArrayList<GroupMessage> getGroups(User p) {
+//        User user = userDao.getUserById(p.getUid());
+//        ArrayList<GroupMessage> groupMessages = new ArrayList<>();
+//        ArrayList<Group> groups = groupDao.getGroups(user);
+//        for(Group g : groups) {
+//            Long id = g.getId();
+//            groupMessages.add(getGroupByGID(id));
+//        }
+//        return groupMessages;
+//    }
 
     @Override
     public ArrayList<GroupMessage> getGroups(Long uid) {
-        User user = userDao.getUserById(uid);
         ArrayList<GroupMessage> groupMessages = new ArrayList<>();
-        ArrayList<Group> groups = groupDao.getGroups(user);
+        ArrayList<Group> groups = groupDao.listGroup(uid);
         for(Group g : groups) {
             Long id = g.getId();
             groupMessages.add(getGroupByGID(id));
@@ -80,19 +81,15 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public void addGroup(Group p) {
-        groupDao.addGroup(p);
+        groupDao.insertGroup(p);
     }
 
-    @Override
-    public void deleteGroup(Group p) {
-        friendDao.deleteGroupFriends(p);
-        groupDao.deleteGroup(p);
-    }
+
 
     @Override
     public void deleteGroup(Long gid) {
         //getGroupByGID(gid);
         friendDao.deleteGroupFriends(gid);
-        groupDao.deleteGroup(gid);
+        groupDao.deleteGroupById(gid);
     }
 }
