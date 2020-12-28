@@ -71,4 +71,7 @@ public interface FriendDao {
 
     @Select("select * from friend where (uid1=#{uid1} and uid2=#{uid2}) or(uid1=#{uid2} and uid2=#{uid1})")
     public Friend getFriend(@Param("uid1") Long uid1, @Param("uid2") Long uid2);
+
+    @Select("select * from friend where (uid1=#{uid} and group2=#{gid}) or (uid2=#{uid} and group1=#{gid})")
+    ArrayList<Friend>  listFriendGroup(@Param("uid") Long uid,@Param("gid") Long gid) ;
 }

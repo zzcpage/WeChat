@@ -14,6 +14,8 @@ public interface MessageService {
      */
     public void addMsg(Message p);
 
+    void addMessage(Message message);
+
     /**
      * 查询两个用户的n条聊天记录（不包含未读信息，如果有未读信息，返回n+未读信息条）
      * @param uid1 当前用户uid
@@ -23,6 +25,8 @@ public interface MessageService {
      */
     public ArrayList<MessageDetail> listMessage(Long uid1, Long uid2, Integer n);
 
+
+    ArrayList<MessageDetail> listMessage(Long uid1, Long uid2, Long start, Integer n);
 
     /**
      * 查询 uid1发送给uid2 的所有未读消息
@@ -53,4 +57,8 @@ public interface MessageService {
      */
     public Page<MessageDetail> getPage(Long uid, Long friendUid, Long pageNo, Long pageSize);
 
+
+    void updateStatue(Long uid1, ArrayList<Message> p);
+
+    void updateStatue(Long id);
 }

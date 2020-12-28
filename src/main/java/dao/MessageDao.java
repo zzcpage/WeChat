@@ -1,10 +1,7 @@
 package dao;
 
 import domain.Message;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -28,6 +25,7 @@ public interface MessageDao {
      */
     //public void addMsg(Message p);
     @Insert("insert into message(suid,ruid,date,msg,state) values(#{suid},#{ruid},#{date},#{msg},#{state})")
+    @Options(useGeneratedKeys = true,keyProperty = "id",keyColumn = "id")
     void insertMessage(Message p);
 
 
@@ -40,7 +38,7 @@ public interface MessageDao {
 
     //更新状态信息
     @Update("update message set state= 1 where id = #{id}")
-    void updateMessageState(Message p );
+    void updateMessageState(Message p);
 
     /**
      * 查询数据库中 双方的聊天记录 uid1发送给uid2 和 uid2 发送给 uid1的数据

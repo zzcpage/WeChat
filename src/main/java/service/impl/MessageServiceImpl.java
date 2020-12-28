@@ -62,12 +62,38 @@ public class MessageServiceImpl implements MessageService {
         messageDao.updataMsg(mid);
     }
 
+    private void UpdateMsg(Long uid1, Long uid2) {
+        messageDao.updateMessage(uid1, uid2);
+    }
+
+    @Override
+    public void addMessage(Message message) {
+        messageDao.insertMessage(message);
+    }
+
     @Override
     public ArrayList<MessageDetail> listMessage(Long uid1, Long uid2, Integer n) {
-        Integer unRead = messageDao.unReadCount(uid1, uid2);
+        Integer unRead = messageDao.unReadCount(uid2, uid1);
+        System.out.println(unRead);
         ArrayList<Message> messages;
         messages = messageDao.listMessage(uid1, uid2,0 , n + unRead);
         ArrayList<MessageDetail> ret = new ArrayList<>();
+        //更新消息状态
+        UpdateMsg(uid2, uid1);
+        for(Message message : messages) {
+            User user = userDao.getUserById(message.getSuid());
+            ret.add(new MessageDetail(message, user.getUname(), user.getHeadimg()));
+        }
+        return ret;
+    }
+
+    @Override
+    public ArrayList<MessageDetail> listMessage(Long uid1, Long uid2, Long start, Integer n) {
+        ArrayList<Message> messages;
+        messages = messageDao.listMessage(uid1, uid2, start ,n);
+        ArrayList<MessageDetail> ret = new ArrayList<>();
+        //更新消息状态
+        //UpdateMsg(uid2, uid1);
         for(Message message : messages) {
             User user = userDao.getUserById(message.getSuid());
             ret.add(new MessageDetail(message, user.getUname(), user.getHeadimg()));
@@ -118,5 +144,19 @@ public class MessageServiceImpl implements MessageService {
         return ret;
     }
 
+
+    @Override
+    public void updateStatue(Long uid1, ArrayList<Message> p) {
+        for(Message message :p)
+        {
+            if(message.getSuid()!=uid1)
+                messageDao.updateMessageState(message);
+        }
+    }
+
+    @Override
+    public void updateStatue(Long id) {
+        messageDao.updataMsg(id);
+    }
 
 }

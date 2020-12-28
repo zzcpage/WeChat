@@ -50,6 +50,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getUser(Long uid) {
+        return userDao.getUserById(uid);
+    }
+
+    @Override
     public boolean isValid(String account, String password) {
         User user = userDao.getUser(account, password);
         return user != null;
@@ -65,8 +70,8 @@ public class UserServiceImpl implements UserService {
     public void addUser(User user) {
         userDao.insertUser(user);
         User user02 = userDao.getUserByAccount(user.getAccount());
-        Group 我的好友 = new Group("我的好友", user02.getUid());
-        groupService.addGroup(我的好友);
+        Group defaultGroup = new Group("我的好友", user02.getUid());
+        groupService.addGroup(defaultGroup);
     }
 
     @Override
@@ -86,10 +91,10 @@ public class UserServiceImpl implements UserService {
     public UserMessage login(String account, String password) {
         User user = userDao.getUser(account, password);
         if(user == null)return null;
-        user.setState(1);
-        userDao.updateUserState(user.getUid(), 1);
-        ArrayList<GroupMessage> groups = groupService.getGroups(user.getUid());
-        UserMessage ret = new UserMessage(user,groups);
+        //user.setState(1);
+        //userDao.updateUserState(user.getUid(), 1);
+        //ArrayList<GroupMessage> groups = groupService.getGroups(user.getUid());
+        UserMessage ret = new UserMessage(user,null);
         return ret;
     }
 
@@ -113,9 +118,15 @@ public class UserServiceImpl implements UserService {
             hasAccount = isValidAccount(account);
         }
         user.setAccount(account);
-        userDao.insertUser(user);
+        addUser(user);
         return account;
     }
 
+    @Override
+    public void changeState(Long uid,int state){
+        User p = userDao.getUserById(uid) ;
+        p.setState(state);
+        userDao.updateUserState(uid, state) ;
+    }
 
 }

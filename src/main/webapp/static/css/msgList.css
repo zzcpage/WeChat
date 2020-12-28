@@ -1,0 +1,70 @@
+#message-box {
+    position: relative;
+    top: 8px;
+    height: 540px;
+    width: 300px;
+    padding-top: 10px;
+    /*width: 175.5px;*/
+    overflow-x:visible;
+    overflow-y: scroll;
+}
+.message-box {
+    width: 280px;
+    height: 60px;
+    line-height: 60px;
+    cursor: default;
+}
+
+.message-box:hover {
+    background-color: rgb(242, 242, 242);
+}
+.message-box-img-div{
+    padding: 5px 10px;
+    height: 50px;
+    width: 50px;
+    display: inline-block;
+}
+.message-box-img{
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+}
+
+.message-box-list-left {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    display: inline-block;
+    vertical-align: top;
+    width: 120px;
+}
+.message-box-name {
+    line-height: 16px;
+    word-break: break-all;
+}
+.message-box-list-msglist {
+    line-height: 30px;
+    font-size: 14px;
+    color: rgb(127, 127, 127);
+    padding-top: 0;
+}
+
+.message-box-list-right {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    display: inline-block;
+    vertical-align: top;
+    line-height: 20px;
+    margin-top: 12px;
+}
+.message-box-date{}
+.message-box-list-num-msglist {
+    background: red;
+    text-align: center;
+    border-radius: 20px;
+    margin: 3px auto;
+    width: 30px;
+    color: white;
+
+}

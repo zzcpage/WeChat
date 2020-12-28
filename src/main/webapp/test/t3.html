@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/webChat_war_war_exploded/js/jquery-3.2.1.min.js"></script>
+    <style>
+        .friend_name {
+            color: blue;
+        }
+        .comment_time {
+            color: rgb(176, 176, 176);
+        }
+
+        .comment {
+            background-color: rgb(220, 220, 220);
+        }
+
+        .comment_detail {
+            word-break: break-all;
+        }
+
+        #comment_box {
+            width: 600px;
+            height: 520px;
+            display: inline-block;
+            overflow-y: auto;
+            border: 1px solid;
+        }
+
+        #more {
+            text-decoration: none;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .button {
+            margin-left: 40px;
+            margin-right: 40px;
+            width: 80px;
+            height: 30px;
+        }
+        #title{
+            width: 580px;
+            text-align: center;
+            border: 1px solid;
+            margin: 0;
+            padding: 10px;
+        }
+        .delete{
+            text-decoration: none;
+            float: right;
+        }
+
+        #shuaxing{
+
+            width: 15px;
+            height: 15px;
+            margin-top: 5px;
+            float: right;
+        }
+        #shuaxing:hover{
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        $(function () {
+            function add0(m){return m<10?'0'+m:m }
+
+            $(document).on("click", "#impress", function() {
+                comment_num = 0;
+                $("#right_box").remove();
+                var right_box = $("<div></div>");
+                right_box.attr("id", "right_box");
+                right_box.appendTo($("body"))
+
+                var comment_box = $("<div></div>");
+                comment_box.attr("id", "comment_box")
+                comment_box.appendTo(right_box);
+
+                var img = $("<img>")
+                img.attr("src", "images/shuaxing.png");
+                img.attr("id", "shuaxing");
+                img.appendTo(comment_box)
+
+                var h3 = $("<h2></h2>");
+                h3.attr("id", "title");
+                h3.text("大家对我的印象")
+                h3.appendTo(comment_box);
+
+                var comments = $("<div></div>");
+                comments.attr("id", "comments");
+                comments.appendTo(comment_box);
+
+                var more = $("<a></a>");
+                more.text("显示更多");
+                more.attr("id", "more");
+                more.attr("style", "text-align: center;");
+                more.attr("href", "#");
+                more.appendTo(comment_box);
+
+                $.get("getImpress", {"fuid":$("#impress").attr("uid")}, function (obj) {
+                    if(obj.length <= 10) {
+                        $("#more").css("display", "none");
+                        comment_num += obj.length;
+                    }
+                    for(var i in obj){
+                        var fname = obj[i].uname;
+                        var date = obj[i].date;
+                        var time = new Date(date);
+                        var y = time.getFullYear();
+                        var m = time.getMonth()+1;
+                        var d = time.getDate();
+                        var h = time.getHours();
+                        var mm = time.getMinutes();
+                        var s = time.getSeconds();
+                        var final = y+'-'+add0(m)+'-'+add0(d)+' '+add0(h)+':'+add0(mm)+':'+add0(s);
+
+                        var curid = obj[i].suid;
+                        var msg = obj[i].msg;
+
+                        var div = $("<div></div>");
+                        div.attr("class", "comment");
+                        div.attr("fuid", curid);
+                        div.appendTo($("#comments"));
+                        if (i % 2 == 1) {
+                            div.css("background-color", "white");
+                        }
+                        var span1 = $("<span></span>");
+
+                        span1.attr("class", "friend_name");
+                        span1.text(fname+" ");
+                        span1.appendTo(div);
+
+                        var span2 = $("<span></span>");
+                        span2.attr("class", "comment_time");
+                        span2.text(final + "描述了我：");
+                        span2.appendTo(div);
+
+                        var span3 = $("<span></span>");
+                        span3.attr("class", "comment_detail");
+                        span3.text(msg);
+                        span3.appendTo(div);
+
+
+                        var span4 = $("<span></span>");
+                        span4.appendTo(div);
+
+                        var a = $("<a></a>");
+                        a.text("删除");
+                        a.attr("class", "delete");
+                        a.attr("href", "#");
+                        a.appendTo(span4);
+                        i++;
+                    }
+                },"json");
+            })
+
+            $(document).on("click", ".delete", function(){
+                var conf =  confirm("确认删除" + $(this).parent().parent().children(".friend_name").text() + "对你的印象？");
+                if(conf) {
+                    //执行删除操作
+                    $(this).parent().parent().remove();
+                    $.get("deleteImpress", {"fuid":$(this).parent().parent().attr("fuid")}, function () {
+                    },"json");
+                }
+            })
+
+
+            function moreCom() {
+
+                var fuid = $("#impress").attr("uid");
+                $.get("moreImpress", {"fuid":fuid,"start":comment_num}, function (obj) {
+                    if(obj.length <= 10) {
+                        $("#more").css("display", "none");
+                        comment_num += obj.length;
+                    }
+                    for(var i in obj){
+                        var fname = obj[i].uname;
+                        var date = obj[i].date;
+                        var time = new Date(date);
+                        var y = time.getFullYear();
+                        var m = time.getMonth()+1;
+                        var d = time.getDate();
+                        var h = time.getHours();
+                        var mm = time.getMinutes();
+                        var s = time.getSeconds();
+                        var final = y+'-'+add0(m)+'-'+add0(d)+' '+add0(h)+':'+add0(mm)+':'+add0(s);
+
+                        var curid = obj[i].suid;
+                        var msg = obj[i].msg;
+
+                        var div = $("<div></div>");
+                        div.attr("class", "comment");
+                        div.attr("fuid", curid);
+                        div.appendTo($("#comments"));
+                        if (i % 2 == 1) {
+                            div.css("background-color", "white");
+                        }
+                        var span1 = $("<span></span>");
+
+                        span1.attr("class", "friend_name");
+                        span1.text(fname);
+                        span1.appendTo(div);
+
+                        var span2 = $("<span></span>");
+                        span2.attr("class", "comment_time");
+                        span2.text(final + "描述了他：");
+                        span2.appendTo(div);
+
+                        var span3 = $("<span></span>");
+                        span3.attr("class", "comment_detail");
+                        span3.text(msg);
+                        span3.appendTo(div);
+
+                        var span4 = $("<span></span>");
+                        span4.appendTo(div);
+
+                        var a = $("<a></a>");
+                        a.text("删除");
+                        a.attr("class", "delete");
+                        a.attr("href", "#");
+                        a.appendTo(span4);
+                        i++;
+                    }
+                },"json");
+
+            }
+
+            $(document).on("click", "#more", moreCom);
+
+            $(document).on("click", "#shuaxing", function(){
+                comment_num = 0;
+                $("#comments").remove();
+                var comments = $("<div></div>");
+                comments.attr("id", "comments");
+                comments.appendTo($("#comment_box"));
+                moreCom();
+            })
+
+        })
+    </script>
+</head>
+<body>
+<button id="impress" uid="16"></button>
+</body>
+</html>

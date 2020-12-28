@@ -1,0 +1,45 @@
+.friend_name {
+    color: blue;
+}
+.comment_time {
+    color: rgb(176, 176, 176);
+}
+.comment {
+    background-color: rgb(220, 220, 220);
+    font-size: 20px;
+}
+
+.comment_detail {
+    word-break: break-all;
+}
+
+#comment_box_fri {
+    width: 840px;
+    height: 415px;
+    display: inline-block;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px solid;
+}
+
+#more , #more_fri{
+    text-decoration: none;
+    display: block;
+    margin: 0 auto;
+}
+
+.delete{
+    text-decoration: none;
+    float: right;
+}
+
+#shuaxing,#shuaxing_fri{
+
+    width: 20px;
+    height: 20px;
+    margin-top: 10px;
+    float: right;
+}
+#shuaxing:hover,#shuaxing_fri:hover{
+    cursor: pointer;
+}

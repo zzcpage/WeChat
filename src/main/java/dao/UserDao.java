@@ -48,8 +48,7 @@ public interface UserDao {
      * @param p 用户对象
      * @return  更新的结果
      */
-    @Update("update user set uname=#{uname},password=#{password},birthday=#{birthday},sex=#{sex},headimg=#{headimg},state=#{state},signature=#{signature} where uid=#{uid}; \n" +
-            "select last_insert_id() ;")
+    @Update("update user set uname=#{uname},password=#{password},birthday=#{birthday},sex=#{sex},headimg=#{headimg},state=#{state},signature=#{signature},email=#{email} where uid=#{uid}; ")
     boolean updateUser(User p ) ;
 
     @Update("update user set state = #{state} where uid = #{uid}")

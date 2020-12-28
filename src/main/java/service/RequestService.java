@@ -11,7 +11,9 @@ public interface RequestService {
      * @param uid 用户uid
      * @return
      */
-    public List<RequestMessage> getRequest(Long uid);
+    public List<RequestMessage> getRequestMessage(Long uid);
+
+    public Request getRequest(Long uid1, Long uid2);
 
     /**
      * 更新好友请求
@@ -24,4 +26,6 @@ public interface RequestService {
      * @param request 好友请求
      */
     public void addRequest(Request request);
+
+    Request getRequestByRid(Long rid);
 }

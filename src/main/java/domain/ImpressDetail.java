@@ -7,7 +7,6 @@ public class ImpressDetail {
     private Long suid;
     private Date date;
     private String msg;
-
     private String uname;
     private String imgSrc;
 

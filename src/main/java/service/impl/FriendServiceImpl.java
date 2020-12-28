@@ -3,14 +3,19 @@ package service.impl;
 
 import dao.FriendDao;
 import dao.GroupDao;
+import dao.MsgListDao;
 import dao.UserDao;
 import domain.Friend;
 import domain.FriendMessage;
+import domain.MsgList;
 import domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import service.FriendService;
+
+import java.util.ArrayList;
+
 @Service("friendService")
 public class FriendServiceImpl implements FriendService {
 
@@ -23,6 +28,9 @@ public class FriendServiceImpl implements FriendService {
 
     @Autowired
     private GroupDao groupDao;
+
+    @Autowired
+    private MsgListDao msgListDao;
 
     @Override
     public void updataFriendInfo(Long uid, Long friendUid, Long newGid) {
@@ -37,6 +45,8 @@ public class FriendServiceImpl implements FriendService {
 
     @Override
     public void deleteFriendById(Long uid, Long friendUid) {
+        msgListDao.deleteMsgListById(uid,friendUid);
+        msgListDao.deleteMsgListById(friendUid, uid);
         friendDao.deleteFriendById(uid, friendUid);
     }
 
@@ -48,10 +58,22 @@ public class FriendServiceImpl implements FriendService {
 
     @Override
     public FriendMessage getFriendById(Long uid, Long friendUid) {
+        if(uid == null || friendUid == null)return null;
         User user = userDao.getUserById(friendUid);
+        System.out.println(user);
         FriendMessage friendMessage = new FriendMessage(user);
+        System.out.println(friendMessage);
         return friendMessage;
     }
 
+    @Override
+    public Friend getFriend(Long uid, Long friendUid) {
+        return friendDao.getFriend(uid, friendUid);
+    }
 
+    @Override
+    public ArrayList<Friend> listFriend(Long uid, Long gid) {
+        ArrayList<Friend> p = friendDao.listFriendGroup(uid,gid);
+        return p ;
+    }
 }

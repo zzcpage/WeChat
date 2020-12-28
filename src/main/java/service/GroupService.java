@@ -5,6 +5,7 @@ import domain.GroupMessage;
 import domain.User;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface GroupService {
 
@@ -25,6 +26,15 @@ public interface GroupService {
      * @return  返回一个好友分组
      */
     public GroupMessage getGroupByGID(Long gid);
+
+
+    /**获得一个指定的好友分组
+     * @param gid 分组id
+     * @return  返回一个好友分组
+     */
+    public Group getGroup(Long gid);
+
+    List<Group> getAllGroup(Long gid);
 
     /**
      * 用户更新分组信息，一般是更新分组的名称

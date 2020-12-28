@@ -1,0 +1,80 @@
+/*中间好友列表样式*/
+.friend {
+    height: 150px;
+    width: 200px;
+    background-color: aqua;
+    /*overflow: hidden;*/
+}
+.friend-one {
+    width: 220px;
+    height: 170px;
+    overflow: scroll;
+}
+/*好友样式*/
+.friend-box{
+    width: 280px;
+    height: 60px;
+    line-height: 60px;
+}
+.friend-box:hover {
+    background-color: rgb(242, 242, 242);
+}
+.friend-box-imgs{
+    position: relative;
+    padding: 5px 10px;
+    height: 50px;
+    width: 50px;
+    display: inline-block;
+}
+.friend-box-img{
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+}
+.friend-box-name{
+    font-size: 15px;
+    display: inline-block;
+    vertical-align: top;
+}
+.friend-box-signature{
+    font-size: 12px;
+    color: rgb(127, 127, 127);
+    vertical-align: top;
+    margin-left: 5px;
+}
+#friend-box-card{
+    position: absolute;
+    height: 100px;
+    width: 300px;
+    background-color: rgb(185, 185, 185);
+    padding-left: 15px;
+    padding-top: 16px;
+    padding-right: 15px;
+    z-index: 100;
+}
+#friend-box-card-name{
+    color: white;
+    font-size: 25px;
+    line-height: 25px;
+}
+#friend-box-card-signature {
+    color: white;
+    margin-top: 8px;
+    font-size: 15px;
+    line-height: 15px;
+    word-break: break-all;
+}
+#friend-box-card-detail{
+    position: absolute;
+    width: 200px;
+    line-height: 15px;
+    background: #fefee1;
+    word-break: break-all;
+    color: red;
+}
+#friend-box-card-detail-list{
+    position: absolute;
+    width: 200px;
+    line-height: 15px;
+    word-break: break-all;
+}

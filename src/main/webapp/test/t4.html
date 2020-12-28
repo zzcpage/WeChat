@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img{
+            width: 50px;
+            height: 50px;
+        }
+        .div_inline{
+            display: inline-block;
+        }
+        .div1{
+            width: 20%;
+            height: 100%;
+            vertical-align: middle;
+            display: inline-block;
+        }
+        .div2{
+            width: 50%;
+            height: 100%;
+            vertical-align: middle;
+            display: inline-block;
+
+        }
+        .div3{
+            width: 30%;
+            height: 100%;
+            vertical-align: middle;
+            line-height: 35px;
+            display: inline-block;
+
+        }
+        .request_item{
+            width: 450px;
+            height: 80px;
+            background-color: rgb(243, 245, 243);
+        }
+        .yanzheng{
+            height: 40%;
+            word-break: break-all;
+            overflow: auto;
+            margin: 3px 0;
+            font-size: 8px
+        }
+        .request_img{
+            position: relative;
+            top: 15px;
+            left: 15px;
+        }
+        .request_tip{
+            font-size: 12px;height: 20%; margin-top: 5px
+        }
+        .request_fname{
+            font-size: 22px; font-weight: bold; height: 30%;
+        }
+    </style>
+    <script src="/webChat_war_war_exploded/js/jquery-3.2.1.min.js"></script>
+
+</head>
+<body>
+<button id="btn">btn</button>
+<table>
+    <tr>
+        <td id="right_td">
+            <div id="right"></div>
+        </td>
+    </tr>
+</table>
+
+<div id="request_time">12-09</div>
+<div class="request_item">
+    <div class="div_inline" id="div1"><img id="request_img" src="../images/cha.png"></div
+    ><div class="div_inline" id="div2" >
+    <div id="request_fname">好友名</div>
+    <div id="request_tip">验证信息</div>
+    <div id="yanzheng">我是验证信我是验证信我是验证信我是验证信我是验证信我是验证信我是验证信我是验证信息</div>
+</div
+><div class="div_inline" id="div3" style="text-align: center;">
+    <select>
+        <option value ="同意">同意</option>
+        <option value ="拒绝">拒绝</option>
+    </select>
+    <select style="width: 50px">
+        <option value ="同意">同意aaaaaaaaaaaaaaaaa</option>
+        <option value ="拒绝">拒绝</option>
+    </select>
+    <input type="button" value="确认">
+</div>
+</div>
+</body>
+</html>

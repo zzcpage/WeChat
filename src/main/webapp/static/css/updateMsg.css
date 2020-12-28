@@ -1,0 +1,106 @@
+.label_name{
+    text-align: right;
+    padding-right: 20px;
+    width: 80px;
+
+}
+#username,#birthday,#email{
+    border: 1px solid #dcdfe6;
+    font-size: 18px;
+    border-radius: 10px;
+    width: 300px;
+    color: #606266;
+    height: 40px;
+    line-height: 40px;
+    outline: 0;
+}
+#username:focus, #signature:focus, #birthday:focus{
+    border: 1px solid #409eff;
+}
+#birthday{
+    width: 200px;
+}
+#signature{
+    color: #606266;
+    border: 1px solid #dcdfe6;
+    border-radius: 4px;
+    width: 400px;
+    height: 100px;
+    font-size: 18px;
+    outline: 0;
+}
+#touxiang{
+    margin: 0 auto;
+    width: 80px;
+    height: 80px;
+    border-radius: 80px;
+
+}
+#touxiang:hover {
+    cursor: pointer;
+}
+#chooseImg{
+    vertical-align: top;
+    line-height: 80px;
+    margin-left: 40px;
+    outline: 0;
+    cursor: pointer;
+}
+table{
+    border-collapse: separate;
+    border-spacing: 10px 10px;
+}
+
+
+#background_div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1000px;
+    background-color: rgba(1,1,1,0.6);
+    z-index: 10;
+}
+
+form{
+    background-color: white;
+    margin: 0 auto;
+    width: 530px;
+    position: relative;
+    top: 150px;
+}
+
+#cha{
+    width: 15px;
+    height: 15px;
+    float: right;
+}
+#cha:hover{
+    cursor: pointer;
+}
+
+#change_msg{
+    display: block;
+    margin: 0 auto;
+}
+#mysign{
+    word-break:break-all;
+    overflow:hidden;
+}
+
+.changeModule{
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 20px;
+    margin-right: 10px;
+    text-align: center;
+}
+.changeModule:hover{
+    cursor: pointer;
+}
+
+#topbar{
+    background-color: rgb(127,127,127);
+}

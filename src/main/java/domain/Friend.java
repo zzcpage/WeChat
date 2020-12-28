@@ -10,11 +10,11 @@ import java.io.Serializable;
  * group2 表示好友1 在好友2 的位置,与group的id对应
  */
 public class Friend implements Serializable {
-    private Long id ;
-    private Long uid1 ;
-    private Long uid2 ;
-    private Long group1 ;
-    private Long group2 ;
+    private Long id;
+    private Long uid1;
+    private Long uid2;
+    private Long group1;
+    private Long group2;
 
     public Friend() {
     }

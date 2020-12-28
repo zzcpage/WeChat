@@ -119,6 +119,14 @@ public class UserMessage {
         this.groups = groups;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public String toString() {
         return "UserMessage{" +

@@ -1,0 +1,195 @@
+#right-friend {
+    position: absolute;
+    /*border: 1px solid rgb(245, 246, 247);*/
+    top: 0;
+    left: 0;
+    text-align: center;
+    height: 60px;
+    width: 840px;
+    background-color: rgb(245, 246, 247);
+    box-shadow: 0 0 10px rgb(200, 200, 200);
+}
+#right-messagebox {
+    position: absolute;
+    /*border: 1px solid;*/
+    top: 60px;
+    left: 0;
+    height: 380px;
+    width: 840px;
+    overflow-y: scroll;
+    overflow-x: visible;
+    box-shadow: 0 0 10px rgb(200, 200, 200);
+}
+#right-message {
+    position: absolute;
+    /*border: 1px solid;*/
+    top: 470px;
+    left: 0;
+    height: 80px;
+    width: 840px;
+}
+#right-message textarea {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 80px;
+    width: 840px;
+}
+#right-controller {
+    position: absolute;
+    /*border: 1px solid;*/
+    top: 550px;
+    left: 0;
+    height: 40px;
+    width: 840px;
+}
+#right-controller button {
+    float: right;
+    position: absolute;
+    height: 40px;
+    width: 100px;
+    right: 0;
+}
+.right-message-fshow {
+    height: 40px;
+    width: 840px;
+    text-align: left;
+    background-color: rgba(0, 255, 255, 1);
+}
+.right-message-ushow {
+    height: 40px;
+    width: 840px;
+    text-align: right;
+    background-color: red;
+}
+#right-message-box {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 600px;
+    width: 840px;
+    z-index: 11;
+    float: left;
+    /*overflow: hidden;*/
+    background-image: url("../images/chat-background.PNG");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.right-message-history-div{
+    position: absolute;
+    top: 440px;
+    left: 0px;
+    width: 840px;
+    height: 30px;
+    box-shadow: 0 0 10px rgb(200, 200, 200);
+}
+.right-message-history{
+    position: relative;
+    float: right;
+    top: 0;
+    right: 0;
+    height: 30px;
+    width: 30px;
+}
+/*聊天消息显示的盒子*/
+.right-message-box{
+    padding-top: 10px;
+    width: 100%;
+}
+/*头像显示的盒子*/
+.right-message-friendimg-div{
+    width:50px ;
+    height: 50px;
+    border-radius: 25px;
+    overflow: hidden;
+    float: left;
+}
+.right-message-box-friend{
+    height: 50px;
+    height:50px;
+}
+.right-message-box-msg{
+    height:auto!important;
+    height:25px;
+    min-height:25px;
+    max-width: 700px;
+    position: relative;
+    line-height: 30px;
+    padding-left: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-radius: 7px;
+    margin-top: 15px;
+    padding-right: 10px;
+    word-break: break-all;
+    display: inline-block;
+}
+.right-message-box-msg-left{
+    position: relative;
+    margin-left: 25px;
+    border: 1px solid #00b6b6;
+    background-color: #f8fdfc;
+}
+.right-message-box-msg-left .right-message-box-msg-down {
+    position: absolute;
+    top: 10px;
+    left: -10px;
+    border-top: 10px solid #00b6b6;
+    border-left: 10px solid transparent;
+}
+
+.right-message-box-msg-left .right-message-box-msg-top {
+    position: absolute;
+    top: 11px;
+    left: -8px;
+    border-top: 10px solid #f8fdfc;
+    border-left: 10px solid transparent;
+    z-index: 100;
+}
+.right-message-friendimg-div-right{
+    margin-top: 20px;
+    float: right;
+    width:50px ;
+    height: 50px;
+    border-radius: 25px;
+    overflow: hidden;
+}
+.right-message-friendimg-right
+{
+    float: right;
+    height: 50px;
+    height:50px;
+}
+.right-message-box-msg-right{
+    position: relative;
+    margin-right: 25px;
+    float: right;
+    border: 1px solid #aaa;
+}
+.right-message-box-msg-right .right-message-box-msg-down {
+    position: absolute;
+    bottom: 11px;
+    right: -10px;
+    border-bottom: 10px solid #aaa;
+    border-right: 10px solid transparent;
+}
+
+.right-message-box-msg-right .right-message-box-msg-top {
+    position: absolute;
+    bottom: 12px;
+    right: -8px;
+    border-bottom: 10px solid #fff;
+    border-right: 10px solid transparent;
+    z-index: 100;
+}
+.right-message-box-body:after{
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+

@@ -1,0 +1,21 @@
+#addList{
+    position: absolute;
+    top: 130px;
+    z-index: 20;
+    left: 380px;
+    box-shadow: 2px 2px 5px #000;
+    width: 100px;
+    list-style-type: none;
+    padding-inline-start: 0;
+    text-align: center;
+    background-color: white;
+    outline: 0;
+}
+#list_addFriend:hover{
+    background-color: rgba(127,127,127,0.3);
+    cursor: pointer;
+}
+#list_addGroup:hover{
+    background-color: rgba(127,127,127,0.3);
+    cursor: pointer;
+}

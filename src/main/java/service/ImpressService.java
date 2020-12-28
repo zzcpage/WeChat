@@ -34,11 +34,23 @@ public interface ImpressService {
     public List<ImpressDetail> getImpresses(Long uid, Integer n);
 
 
+    public List<ImpressDetail> getImpresses(Long uid, Long start, Integer n);
+
+
     /**
      * 获取 uid2 对 uid1 的印象
      * @param uid1 用户1的uid
      * @param uid2 用户2的uid
      * @return 好友印象
      */
-    public ImpressDetail getImpress(Long uid1, Long uid2);
+    public ImpressDetail getImpressDetail(Long uid1, Long uid2);
+
+
+    /**
+     * 获取 uid2 对 uid1 的印象
+     * @param uid1 用户1的uid
+     * @param uid2 用户2的uid
+     * @return 好友印象
+     */
+    public Impress getImpress(Long uid1, Long uid2);
 }

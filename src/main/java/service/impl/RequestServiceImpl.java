@@ -7,6 +7,7 @@ import domain.Friend;
 import domain.Request;
 import domain.RequestMessage;
 import domain.User;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,7 @@ public class RequestServiceImpl implements RequestService {
     private FriendDao friendDao;
 
     @Override
-    public List<RequestMessage> getRequest(Long uid) {
+    public List<RequestMessage> getRequestMessage(Long uid) {
         List<Request> requests = requestDao.listRequest(uid);
         List<RequestMessage> ret = new ArrayList<>();
         for(Request request:requests) {
@@ -41,6 +42,11 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
+    public Request getRequest(Long uid1, Long uid2) {
+        return requestDao.getRequest(uid1, uid2);
+    }
+
+    @Override
     public void updateRequest(Request request) {
         //如果已经是好友，直接返回
         Friend friend = friendDao.getFriend(request.getRuid(), request.getSuid());
@@ -48,8 +54,6 @@ public class RequestServiceImpl implements RequestService {
         Request request1 = requestDao.getRequest(request.getRuid(), request.getSuid());
         //只有该请求未处理时，才更新
         if(request1==null || !request1.getState().equals(0))return;
-//        request1.setSgroup(request.getRgroup());
-//        request1.setState(request.getState());
         requestDao.updateRequest(request);
         if(!request.getState().equals(1))return;
         //如果成功，插入一条新好友记录
@@ -69,5 +73,10 @@ public class RequestServiceImpl implements RequestService {
         } else {
             requestDao.insertRequest(request);
         }
+    }
+
+    @Override
+    public Request getRequestByRid(Long rid) {
+        return requestDao.getRequestByRid(rid);
     }
 }

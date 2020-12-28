@@ -31,6 +31,8 @@ public class User implements Serializable {
     private String headimg = "";
     private int state = 0;
 
+    public static String IMG_SRC_DEFAULT = "static/images/touxiang.jpg";
+
     public User() {
     }
 
@@ -46,10 +48,12 @@ public class User implements Serializable {
         this.state = state;
     }
 
-    public User(String uname, String password, String email) {
+    public User(String uname, String password) {
         this.uname = uname;
         this.password = password;
-        this.email = email;
+        this.sex = "男";
+        this.birthday = new Date();
+        this.headimg = IMG_SRC_DEFAULT;
     }
 
     public Long getUid() {

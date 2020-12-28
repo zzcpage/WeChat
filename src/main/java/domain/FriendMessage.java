@@ -49,7 +49,13 @@ public class FriendMessage {
         this.status = user.getState();
     }
 
+    public String getEmail() {
+        return email;
+    }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public Long getUid() {
         return uid;

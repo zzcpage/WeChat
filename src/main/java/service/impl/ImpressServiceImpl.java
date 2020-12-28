@@ -39,22 +39,39 @@ public class ImpressServiceImpl implements ImpressService {
 
     @Override
     public List<ImpressDetail> getImpresses(Long uid, Integer n) {
-        long countImpress = impressDao.getCountImpress(uid);
-        List<Impress> impresses = impressDao.listImpress(uid,Math.max(countImpress - n, 0) ,n);
+        List<Impress> impresses = impressDao.listImpress(uid,0 ,n);
         List<ImpressDetail> ret = new ArrayList<>();
         for(Impress impress:impresses) {
-            User user = userDao.getUserById(impress.getRuid());
+            System.out.println(impress);
+            User user = userDao.getUserById(impress.getSuid());
+            System.out.println(user);
             ret.add(new ImpressDetail(impress, user.getUname(), user.getHeadimg()));
         }
         return ret;
     }
 
     @Override
-    public ImpressDetail getImpress(Long uid1, Long uid2) {
+    public List<ImpressDetail> getImpresses(Long uid, Long start, Integer n) {
+        List<Impress> impresses = impressDao.listImpress(uid,start ,n);
+        List<ImpressDetail> ret = new ArrayList<>();
+        for(Impress impress:impresses) {
+            User user = userDao.getUserById(impress.getSuid());
+            ret.add(new ImpressDetail(impress, user.getUname(), user.getHeadimg()));
+        }
+        return ret;
+    }
+
+    @Override
+    public ImpressDetail getImpressDetail(Long uid1, Long uid2) {
         Impress impress = impressDao.getImpress(uid1, uid2);
         if(impress == null)return null;
-        User user = userDao.getUserById(impress.getRuid());
+        User user = userDao.getUserById(impress.getSuid());
         return new ImpressDetail(impress, user.getUname(), user.getHeadimg());
+    }
+
+    @Override
+    public Impress getImpress(Long uid1, Long uid2) {
+        return impressDao.getImpress(uid1, uid2);
     }
 
 

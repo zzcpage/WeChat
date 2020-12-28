@@ -75,6 +75,16 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
+    public Group getGroup(Long gid) {
+        return groupDao.getGroupByGID(gid);
+    }
+
+    @Override
+    public List<Group> getAllGroup(Long gid) {
+        return groupDao.listGroup(gid);
+    }
+
+    @Override
     public void updateGroup(Group p) {
         groupDao.updateGroup(p);
     }

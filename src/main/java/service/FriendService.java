@@ -1,6 +1,9 @@
 package service;
 
+import domain.Friend;
 import domain.FriendMessage;
+
+import java.util.ArrayList;
 
 public interface FriendService {
 
@@ -37,4 +40,7 @@ public interface FriendService {
      */
     public FriendMessage getFriendById(Long uid, Long friendUid);
 
+    public Friend getFriend(Long uid, Long friendUid);
+
+    ArrayList<Friend> listFriend(Long uid, Long gid);
 }

@@ -20,6 +20,9 @@ public interface UserService {
      */
     public UserMessage findUserByAccount(String account);
 
+
+    public User getUser(Long uid);
+
     /**
      * 判断账号密码是否有效
      * @param account 账号
@@ -78,4 +81,5 @@ public interface UserService {
      */
     public String register(User user);
 
+    void changeState(Long uid, int state);
 }

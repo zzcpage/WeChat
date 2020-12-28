@@ -6,22 +6,27 @@ public class MsgListDetail {
     private FriendMessage friend;
     private String lastMessage;
     private Date date;
-    private Boolean isSentBySelf;
+    private int count ;
 
     public MsgListDetail(FriendMessage friend, String lastMessage, Date date) {
         this.friend = friend;
         this.lastMessage = lastMessage;
         this.date = date;
-        this.isSentBySelf = false;
+        this.count = 0 ;
     }
 
     public MsgListDetail(MsgList msgList, FriendMessage friendMessage, Boolean isSentBySelf) {
         this.date = msgList.getDate();
         this.lastMessage = msgList.getMsg();
         this.friend = friendMessage;
-        this.isSentBySelf = isSentBySelf;
+        this.count = 0 ;
     }
-
+    public MsgListDetail(MsgList msgList, FriendMessage friendMessage,int count ) {
+        this.date = msgList.getDate();
+        this.lastMessage = msgList.getMsg();
+        this.friend = friendMessage;
+        this.count = count ;
+    }
     public FriendMessage getFriend() {
         return friend;
     }
@@ -46,12 +51,12 @@ public class MsgListDetail {
         this.date = date;
     }
 
-    public Boolean getSentBySelf() {
-        return isSentBySelf;
+    public int getCount() {
+        return count;
     }
 
-    public void setSentBySelf(Boolean sentBySelf) {
-        isSentBySelf = sentBySelf;
+    public void setCount(int count) {
+        this.count = count;
     }
 
     @Override
@@ -60,7 +65,7 @@ public class MsgListDetail {
                 "friend=" + friend +
                 ", lastMessage='" + lastMessage + '\'' +
                 ", date=" + date +
-                ", isSentBySelf=" + isSentBySelf +
+                ", count=" + count +
                 '}';
     }
 }

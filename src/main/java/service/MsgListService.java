@@ -12,7 +12,7 @@ public interface MsgListService {
      * @param uid
      * @return
      */
-    public ArrayList<MsgListDetail> getMessageListByUid(Long uid);
+    ArrayList<MsgListDetail> getMsgList(Long uid);
 
     /**
      * 添加一个消息列表项
@@ -31,4 +31,7 @@ public interface MsgListService {
      * @param msgList
      */
     public void updateMsgList(MsgList msgList);
+
+
+    public MsgList getMsg(Long uid1, Long uid2);
 }
